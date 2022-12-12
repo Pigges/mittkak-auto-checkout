@@ -21,8 +21,8 @@ else
     # Get response
     RESPONSE=$(echo "${CURL_OUTPUT}" | sed -e 's/httpcode.*//')
     if [ ${httpCode} = 200 ]; then
-        CHECKOUT=$(node parse.js "${RESPONSE}")
-        echo "${NOW}: success --> HTTP status ${httpCode} --> ${CHECKOUT}" >> ${OUTPUT_FILE}
+        CHECKOUT=$(/usr/bin/node /opt/checkout-food/parse.js "${RESPONSE}")
+        echo "${NOW}: success --> HTTP ${httpCode} --> ${CHECKOUT}" >> ${OUTPUT_FILE}
     else
         echo "${NOW}: fail --> HTTP ${httpCode} --> ${RESPONSE}" >> ${OUTPUT_FILE}
     fi
